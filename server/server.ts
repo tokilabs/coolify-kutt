@@ -28,6 +28,8 @@ app.prepare().then(async () => {
 
   if (env.isDev) {
     server.use(morgan("combined", { stream }));
+  } else if (String(env.HTTP_LOG_MORGAN_FORMAT).toLocaleLowerCase() != "none") {
+    server.use(morgan(env.HTTP_LOG_MORGAN_FORMAT || "tiny", { stream }));
   }
 
   server.use(helmet({ contentSecurityPolicy: false }));

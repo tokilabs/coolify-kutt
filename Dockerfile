@@ -1,6 +1,7 @@
 FROM node:12-alpine
 
 RUN apk add --update bash
+RUN apk add --update curl
 
 # Setting working directory. 
 WORKDIR /usr/src/app

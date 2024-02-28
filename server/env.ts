@@ -38,7 +38,8 @@ const env = cleanEnv(process.env, {
   MAIL_FROM: str({ default: "", example: "Kutt <support@kutt.it>" }),
   MAIL_PASSWORD: str(),
   REPORT_EMAIL: str({ default: "" }),
-  CONTACT_EMAIL: str({ default: "" })
+  CONTACT_EMAIL: str({ default: "" }),
+  HTTP_LOG_MORGAN_FORMAT: str({ default: "tiny" })
 });
 
 export default env;
