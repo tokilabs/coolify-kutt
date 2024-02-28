@@ -2,7 +2,7 @@ version: "3"
 
 services:
   kutt:
-    build: .
+    image: .
     depends_on:
       - postgres
       - redis
@@ -12,11 +12,11 @@ services:
     env_file:
       - .env
     environment:
-      DB_HOST: ${PGHOST:-postgres}
-      DB_NAME: ${PGDATABASE:-kutt}
-      DB_USER: ${PGUSER:-user}
-      DB_PASSWORD: ${PGPASSWORD:-pass}
-      REDIS_HOST: ${REDIS_HOST:-redis}
+      DB_HOST: postgres
+      DB_NAME: kutt
+      DB_USER: user
+      DB_PASSWORD: pass
+      REDIS_HOST: redis
 
   redis:
     image: redis:6.0-alpine
@@ -24,11 +24,11 @@ services:
       - redis_data:/data
 
   postgres:
-    image: postgres:14-alpine
+    image: postgres:12-alpine
     environment:
-      POSTGRES_USER: ${PGUSER:-user}
-      POSTGRES_PASSWORD: ${PGPASSWORD:-pass}
-      POSTGRES_DB: ${PGDATABASE:-kutt}
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pass
+      POSTGRES_DB: kutt
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
